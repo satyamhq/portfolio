@@ -1,0 +1,58 @@
+{
+  "name": "Satyam Kumar",
+  "role": "Engineer | Builder | Founder",
+  "education": [
+    {"school": "Lovely Professional University", "degree": "B.Tech CSE", "years": "2025-2029", "status": "current"},
+    {"school": "Mount Carmel English School", "level": "11th-12th", "years": "2023-2025"},
+    {"school": "Saraswati Vidya Mandir, Purnia", "level": "6th-10th", "years": "2018-2023"},
+    {"school": "Saraswati Shishu Mandir, Purnia", "level": "LKG-5th", "years": "2011-2018"}
+  ],
+  "startup": {
+    "name": "Savify",
+    "url": "savify.money",
+    "description": "A verified student cashback and discounts platform built for India. Solves the problem of students wasting time on discount codes that don't work by bringing verified cashback, working codes, and exclusive student deals into one platform. Gives brands a direct, measurable way to reach a verified Gen Z student audience."
+  },
+  "projects": [
+    {"name": "Greenhouse Automation (Arduino)", "url": "github.com/satyamhq/greenhouse-automation-arduino"},
+    {"name": "HackerZone AI Interview", "url": "github.com/satyamhq/hackerzone-ai-interview"},
+    {"name": "Curely", "url": "github.com/satyamhq/Curely"},
+    {"name": "HackerZone", "url": "github.com/satyamhq/hackerzone"},
+    {"name": "61stSec", "url": "github.com/satyamhq/61stsec"},
+    {"name": "AI-Powered Personal Farming Assistant", "url": "github.com/satyamhq/ai-powered-personal-farming-assistant"},
+    {"name": "Startflow", "url": "github.com/satyamhq/Startflow"}
+  ],
+  "skills": {
+    "languages": ["Java", "C#", "C++", "C", "Python", "JavaScript"],
+    "web": ["HTML", "CSS", "Full-Stack Development"],
+    "data_systems": ["MySQL", "SQL", "DBMS", "Linux System Administration"],
+    "tools": ["Git", "GitHub", "Version Control", "Microsoft Excel"],
+    "soft_skills": ["Leadership", "Time Management", "Project Management", "Communication"]
+  },
+  "certifications": [
+    {"name": "Introduction to Model Context Protocol", "issuer": "Anthropic", "date": "Apr 2026"},
+    {"name": "Programming with JavaScript", "issuer": "Meta", "date": "Feb 2026"},
+    {"name": "Introduction to Front-End Development", "issuer": "Meta", "date": "Jan 2026"},
+    {"name": "Version Control", "issuer": "Meta", "date": "Jan 2026"},
+    {"name": "Crash Course on Python", "issuer": "Google", "date": "Nov 2025"},
+    {"name": "Python (Basic)", "issuer": "HackerRank", "date": "Nov 2025"},
+    {"name": "Excel Essential Training (Microsoft 365)", "issuer": "LinkedIn Learning", "date": "Nov 2025"},
+    {"name": "Communication Foundations", "issuer": "LinkedIn Learning", "date": "Nov 2025"},
+    {"name": "Building Positive Attitude", "issuer": "Tech Veda", "date": "Oct 2025"},
+    {"name": "Leadership Foundations", "issuer": "LinkedIn Learning", "date": "Oct 2025"},
+    {"name": "Time Management Fundamentals", "issuer": "LinkedIn Learning", "date": "Oct 2025"}
+  ],
+  "hackathons": [
+    {"name": "Arena WEB-A-THON 2.0", "date": "13 Feb 2026"},
+    {"name": "Cognitia'26 ReSurgence", "date": "27 Mar 2026"},
+    {"name": "Hack Ai S2", "date": "9 Apr 2026"}
+  ],
+  "contact": {
+    "email": "satyam31sk@gmail.com",
+    "linkedin": "linkedin.com/in/satyamhq",
+    "github": "github.com/satyamhq",
+    "leetcode": "leetcode.com/satyamhq",
+    "hackerrank": "hackerrank.com/satyamhq",
+    "hackerearth": "hackerearth.com/@satyamhq",
+    "codechef": "codechef.com/users/satyamhq"
+  }
+}
