@@ -1,4 +1,5 @@
-import { Trophy, Award, ExternalLink, Code2 } from 'lucide-react';
+import { useState } from 'react';
+import { Trophy, Award, ExternalLink, Code2, Eye, X } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 
 const hackathons = [
@@ -13,66 +14,88 @@ const certifications = [
     issuer: 'Anthropic',
     date: 'Apr 2026',
     url: 'https://verify.skilljar.com/c/38m7f2if3crd',
+    image: null,
+    badgeColor: '#7C4DFF',
   },
   {
     name: 'Programming with JavaScript',
     issuer: 'Meta',
     date: 'Feb 2026',
     url: 'https://coursera.org/account/accomplishments/verify/181ZTYSWMNW5',
+    image: '/certificates/meta-javascript.jpg',
+    badgeColor: '#0081FB',
   },
   {
     name: 'Introduction to Front-End Development',
     issuer: 'Meta',
     date: 'Jan 2026',
     url: 'https://coursera.org/account/accomplishments/verify/CYAPZ7X28IRK',
+    image: '/certificates/meta-frontend.jpg',
+    badgeColor: '#0081FB',
   },
   {
     name: 'Version Control',
     issuer: 'Meta',
     date: 'Jan 2026',
     url: 'https://coursera.org/account/accomplishments/verify/7CR28Y1XZIOL',
+    image: '/certificates/meta-version-control.jpg',
+    badgeColor: '#0081FB',
   },
   {
     name: 'Crash Course on Python',
     issuer: 'Google',
     date: 'Nov 2025',
     url: 'https://coursera.org/account/accomplishments/verify/7HH1JUIJ5519',
+    image: '/certificates/google-python.jpg',
+    badgeColor: '#EA4335',
   },
   {
     name: 'Python (Basic)',
     issuer: 'HackerRank',
     date: 'Nov 2025',
     url: 'https://hackerrank.com/certificates/e0135594a97d',
+    image: '/certificates/hackerrank-python.png',
+    badgeColor: '#00EA64',
   },
   {
     name: 'Excel Essential Training (Microsoft 365)',
     issuer: 'LinkedIn Learning',
     date: 'Nov 2025',
     url: null,
+    image: null,
+    badgeColor: '#0A66C2',
   },
   {
     name: 'Communication Foundations',
     issuer: 'LinkedIn Learning',
     date: 'Nov 2025',
     url: null,
+    image: null,
+    badgeColor: '#0A66C2',
   },
   {
     name: 'Building Positive Attitude',
     issuer: 'Tech Veda',
     date: 'Oct 2025',
     url: null,
+    image: null,
+    badgeColor: '#FF5A3C',
   },
   {
     name: 'Leadership Foundations',
     issuer: 'LinkedIn Learning',
     date: 'Oct 2025',
     url: null,
+    image: null,
+    badgeColor: '#0A66C2',
   },
   {
     name: 'Time Management Fundamentals',
     issuer: 'LinkedIn Learning',
     date: 'Oct 2025',
     url: null,
+    image: null,
+    badgeColor: '#0A66C2',
   },
 ];
 
@@ -116,6 +139,8 @@ const codingProfiles = [
 ];
 
 export default function Achievements() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
   return (
     <section id="achievements" className="section-padding" aria-label="Achievements">
       <div className="container">
@@ -143,7 +168,7 @@ export default function Achievements() {
           </div>
         </ScrollReveal>
 
-        {/* Certifications */}
+        {/* Certifications with Images */}
         <ScrollReveal delay={0.2}>
           <div className="ach__section">
             <h3 className="ach__section-title">
@@ -151,24 +176,69 @@ export default function Achievements() {
             </h3>
             <div className="ach__certs-grid">
               {certifications.map((cert) => (
-                <div key={cert.name} className="ach__cert">
-                  <div className="ach__cert-info">
-                    <span className="ach__cert-name">{cert.name}</span>
-                    <span className="caption">
-                      {cert.issuer} · {cert.date}
-                    </span>
-                  </div>
-                  {cert.url && (
-                    <a
-                      href={cert.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ach__cert-verify"
-                      aria-label={`Verify ${cert.name} certificate`}
+                <div
+                  key={cert.name}
+                  className={`ach__cert ${cert.image ? 'ach__cert--has-image' : ''}`}
+                >
+                  {cert.image && (
+                    <div
+                      className="ach__cert-thumb-wrapper"
+                      onClick={() => setSelectedImage(cert)}
+                      title={`Click to preview ${cert.name} certificate`}
                     >
-                      <ExternalLink size={14} /> Verify
-                    </a>
+                      <img
+                        src={cert.image}
+                        alt={`${cert.name} Certificate`}
+                        className="ach__cert-thumb"
+                        loading="lazy"
+                      />
+                      <div className="ach__cert-thumb-overlay">
+                        <Eye size={18} />
+                      </div>
+                    </div>
                   )}
+
+                  <div className="ach__cert-body">
+                    <div className="ach__cert-info">
+                      <div className="ach__cert-header">
+                        <span
+                          className="ach__cert-issuer-badge"
+                          style={{
+                            backgroundColor: `${cert.badgeColor || '#3B2FE0'}15`,
+                            color: cert.badgeColor || '#3B2FE0',
+                          }}
+                        >
+                          {cert.issuer}
+                        </span>
+                        <span className="caption">{cert.date}</span>
+                      </div>
+                      <span className="ach__cert-name">{cert.name}</span>
+                    </div>
+
+                    <div className="ach__cert-actions">
+                      {cert.image && (
+                        <button
+                          type="button"
+                          className="ach__cert-btn ach__cert-btn--preview"
+                          onClick={() => setSelectedImage(cert)}
+                          aria-label={`Preview ${cert.name} image`}
+                        >
+                          <Eye size={13} /> View Image
+                        </button>
+                      )}
+                      {cert.url && (
+                        <a
+                          href={cert.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="ach__cert-btn ach__cert-btn--verify"
+                          aria-label={`Verify ${cert.name} certificate on ${cert.issuer}`}
+                        >
+                          <ExternalLink size={13} /> Verify
+                        </a>
+                      )}
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -203,6 +273,57 @@ export default function Achievements() {
         </ScrollReveal>
       </div>
 
+      {/* Certificate Modal Lightbox */}
+      {selectedImage && (
+        <div
+          className="cert-modal-backdrop"
+          onClick={() => setSelectedImage(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${selectedImage.name} certificate preview`}
+        >
+          <div
+            className="cert-modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="cert-modal-header">
+              <div>
+                <h4 className="cert-modal-title">{selectedImage.name}</h4>
+                <p className="caption">
+                  {selectedImage.issuer} · {selectedImage.date}
+                </p>
+              </div>
+              <button
+                className="cert-modal-close"
+                onClick={() => setSelectedImage(null)}
+                aria-label="Close certificate preview"
+              >
+                <X size={20} />
+              </button>
+            </div>
+            <div className="cert-modal-image-container">
+              <img
+                src={selectedImage.image}
+                alt={`${selectedImage.name} certificate`}
+                className="cert-modal-image"
+              />
+            </div>
+            {selectedImage.url && (
+              <div className="cert-modal-footer">
+                <a
+                  href={selectedImage.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary btn-sm"
+                >
+                  <ExternalLink size={15} /> Verify on Official Platform
+                </a>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       <style>{`
         .ach__label {
           text-transform: uppercase;
@@ -217,7 +338,7 @@ export default function Achievements() {
         }
 
         .ach__section {
-          margin-bottom: 40px;
+          margin-bottom: 44px;
         }
 
         .ach__section-title {
@@ -260,61 +381,151 @@ export default function Achievements() {
           font-size: 0.9375rem;
         }
 
-        /* Certifications */
+        /* Certifications Grid */
         .ach__certs-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 8px;
+          gap: 16px;
         }
 
         .ach__cert {
           display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 12px;
-          padding: 14px 18px;
-          background: var(--color-bg-secondary);
-          border-radius: 12px;
+          flex-direction: column;
+          background: var(--color-bg-primary);
+          border-radius: 16px;
           border: 1px solid var(--color-border);
-          transition: all 250ms var(--ease-out-expo);
+          overflow: hidden;
+          transition: all 300ms var(--ease-out-expo);
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
         }
 
         .ach__cert:hover {
-          border-color: var(--color-accent-primary);
+          transform: translateY(-3px);
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+          border-color: rgba(59, 47, 224, 0.3);
+        }
+
+        /* Certificate Thumbnail */
+        .ach__cert-thumb-wrapper {
+          position: relative;
+          width: 100%;
+          height: 180px;
+          background: #F8F9FA;
+          cursor: pointer;
+          overflow: hidden;
+          border-bottom: 1px solid var(--color-border);
+        }
+
+        .ach__cert-thumb {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: top center;
+          transition: transform 350ms var(--ease-out-expo);
+        }
+
+        .ach__cert-thumb-wrapper:hover .ach__cert-thumb {
+          transform: scale(1.04);
+        }
+
+        .ach__cert-thumb-overlay {
+          position: absolute;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.4);
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transition: opacity 250ms ease;
+        }
+
+        .ach__cert-thumb-wrapper:hover .ach__cert-thumb-overlay {
+          opacity: 1;
+        }
+
+        /* Certificate Body */
+        .ach__cert-body {
+          padding: 16px 18px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          gap: 12px;
+          flex: 1;
         }
 
         .ach__cert-info {
           display: flex;
           flex-direction: column;
-          gap: 2px;
-          min-width: 0;
+          gap: 6px;
+        }
+
+        .ach__cert-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 8px;
+        }
+
+        .ach__cert-issuer-badge {
+          font-size: 0.6875rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+          padding: 3px 8px;
+          border-radius: 6px;
         }
 
         .ach__cert-name {
-          font-weight: 500;
-          font-size: 0.875rem;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
+          font-weight: 600;
+          font-size: 0.9375rem;
+          line-height: 1.4;
+          color: var(--color-text-primary);
         }
 
-        .ach__cert-verify {
+        .ach__cert-actions {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-top: auto;
+          padding-top: 6px;
+        }
+
+        .ach__cert-btn {
           display: inline-flex;
           align-items: center;
-          gap: 4px;
+          gap: 5px;
           font-size: 0.75rem;
-          font-weight: 500;
-          color: var(--color-accent-primary);
-          white-space: nowrap;
-          padding: 4px 10px;
+          font-weight: 600;
+          padding: 6px 12px;
           border-radius: var(--radius-pill);
-          background: rgba(59, 47, 224, 0.06);
-          transition: all 200ms;
           text-decoration: none;
+          transition: all 200ms ease;
+          cursor: pointer;
+          border: none;
+          white-space: nowrap;
         }
 
-        .ach__cert-verify:hover {
-          background: rgba(59, 47, 224, 0.12);
+        .ach__cert-btn--preview {
+          background: var(--color-bg-secondary);
+          color: var(--color-text-primary);
+          border: 1px solid var(--color-border);
+        }
+
+        .ach__cert-btn--preview:hover {
+          background: rgba(59, 47, 224, 0.08);
+          color: var(--color-accent-primary);
+          border-color: var(--color-accent-primary);
+        }
+
+        .ach__cert-btn--verify {
+          background: rgba(59, 47, 224, 0.08);
+          color: var(--color-accent-primary);
+        }
+
+        .ach__cert-btn--verify:hover {
+          background: var(--color-accent-primary);
+          color: white;
         }
 
         /* Coding Profiles */
@@ -351,7 +562,105 @@ export default function Achievements() {
           display: block;
         }
 
-        @media (max-width: 768px) {
+        /* Modal Lightbox */
+        .cert-modal-backdrop {
+          position: fixed;
+          inset: 0;
+          z-index: 20000;
+          background: rgba(0, 0, 0, 0.75);
+          backdrop-filter: blur(8px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 20px;
+          animation: modalFadeIn 250ms ease;
+        }
+
+        @keyframes modalFadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        .cert-modal-content {
+          background: var(--color-bg-primary);
+          border-radius: 20px;
+          max-width: 800px;
+          width: 100%;
+          max-height: 90vh;
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+          border: 1px solid var(--color-border);
+          animation: modalScaleIn 250ms cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        @keyframes modalScaleIn {
+          from { transform: scale(0.92); opacity: 0; }
+          to { transform: scale(1); opacity: 1; }
+        }
+
+        .cert-modal-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 16px 20px;
+          border-bottom: 1px solid var(--color-border);
+        }
+
+        .cert-modal-title {
+          font-family: var(--font-display);
+          font-size: 1.125rem;
+          font-weight: 700;
+          color: var(--color-text-primary);
+          margin: 0 0 2px 0;
+        }
+
+        .cert-modal-close {
+          background: var(--color-bg-secondary);
+          border: 1px solid var(--color-border);
+          color: var(--color-text-muted);
+          width: 36px;
+          height: 36px;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 180ms ease;
+        }
+
+        .cert-modal-close:hover {
+          background: rgba(0, 0, 0, 0.1);
+          color: var(--color-text-primary);
+        }
+
+        .cert-modal-image-container {
+          padding: 16px;
+          overflow-y: auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #F4F4F6;
+        }
+
+        .cert-modal-image {
+          max-width: 100%;
+          max-height: 60vh;
+          object-fit: contain;
+          border-radius: 8px;
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .cert-modal-footer {
+          padding: 14px 20px;
+          border-top: 1px solid var(--color-border);
+          display: flex;
+          justify-content: flex-end;
+          background: var(--color-bg-primary);
+        }
+
+        @media (max-width: 850px) {
           .ach__certs-grid {
             grid-template-columns: 1fr;
           }
