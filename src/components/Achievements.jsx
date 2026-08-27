@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Trophy, Award, ExternalLink, Code2, Eye, X } from 'lucide-react';
+import { Trophy, Award, ExternalLink, Code2, Eye, X, CheckCircle2 } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 
 const hackathons = [
@@ -10,12 +10,12 @@ const hackathons = [
 
 const certifications = [
   {
-    name: 'Introduction to Model Context Protocol',
-    issuer: 'Anthropic',
-    date: 'Apr 2026',
-    url: 'https://verify.skilljar.com/c/38m7f2if3crd',
-    image: null,
-    badgeColor: '#7C4DFF',
+    name: 'Crash Course on Python',
+    issuer: 'Google',
+    date: 'Nov 2025',
+    url: 'https://coursera.org/account/accomplishments/verify/7HH1JUIJ5519',
+    image: '/certificates/google-python.jpg',
+    badgeColor: '#EA4335',
   },
   {
     name: 'Programming with JavaScript',
@@ -42,20 +42,20 @@ const certifications = [
     badgeColor: '#0081FB',
   },
   {
-    name: 'Crash Course on Python',
-    issuer: 'Google',
-    date: 'Nov 2025',
-    url: 'https://coursera.org/account/accomplishments/verify/7HH1JUIJ5519',
-    image: '/certificates/google-python.jpg',
-    badgeColor: '#EA4335',
-  },
-  {
     name: 'Python (Basic)',
     issuer: 'HackerRank',
     date: 'Nov 2025',
     url: 'https://hackerrank.com/certificates/e0135594a97d',
     image: '/certificates/hackerrank-python.png',
     badgeColor: '#00EA64',
+  },
+  {
+    name: 'Introduction to Model Context Protocol',
+    issuer: 'Anthropic',
+    date: 'Apr 2026',
+    url: 'https://verify.skilljar.com/c/38m7f2if3crd',
+    image: null,
+    badgeColor: '#7C4DFF',
   },
   {
     name: 'Excel Essential Training (Microsoft 365)',
@@ -168,7 +168,7 @@ export default function Achievements() {
           </div>
         </ScrollReveal>
 
-        {/* Certifications with Images */}
+        {/* Certifications Grid with Uniform Aspect Ratio Cards */}
         <ScrollReveal delay={0.2}>
           <div className="ach__section">
             <h3 className="ach__section-title">
@@ -176,33 +176,55 @@ export default function Achievements() {
             </h3>
             <div className="ach__certs-grid">
               {certifications.map((cert) => (
-                <div
-                  key={cert.name}
-                  className={`ach__cert ${cert.image ? 'ach__cert--has-image' : ''}`}
-                >
-                  {cert.image && (
-                    <div
-                      className="ach__cert-thumb-wrapper"
-                      onClick={() => setSelectedImage(cert)}
-                      title={`Click to preview ${cert.name} certificate`}
-                    >
-                      <img
-                        src={cert.image}
-                        alt={`${cert.name} Certificate`}
-                        className="ach__cert-thumb"
-                        loading="lazy"
-                      />
-                      <div className="ach__cert-thumb-overlay">
-                        <Eye size={18} />
+                <div key={cert.name} className="ach__cert-card">
+                  {/* Certificate Frame Preview (Uniform 4:3 Certificate Aspect Ratio) */}
+                  <div
+                    className="ach__cert-preview-frame"
+                    onClick={() => {
+                      if (cert.image) setSelectedImage(cert);
+                    }}
+                    style={{ cursor: cert.image ? 'pointer' : 'default' }}
+                    title={cert.image ? `Click to view full ${cert.name} certificate` : cert.name}
+                  >
+                    {cert.image ? (
+                      <div className="ach__cert-image-holder">
+                        <img
+                          src={cert.image}
+                          alt={`${cert.name} Certificate`}
+                          className="ach__cert-img"
+                          loading="lazy"
+                        />
+                        <div className="ach__cert-overlay">
+                          <span className="ach__cert-overlay-btn">
+                            <Eye size={16} /> View Full Certificate
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  )}
+                    ) : (
+                      <div className="ach__cert-placeholder">
+                        <div className="ach__cert-placeholder-border">
+                          <div className="ach__cert-placeholder-seal">
+                            <Award size={28} color={cert.badgeColor || '#3B2FE0'} />
+                          </div>
+                          <span
+                            className="ach__cert-placeholder-issuer"
+                            style={{ color: cert.badgeColor || '#3B2FE0' }}
+                          >
+                            {cert.issuer}
+                          </span>
+                          <p className="ach__cert-placeholder-title">{cert.name}</p>
+                          <span className="caption">{cert.date}</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
 
-                  <div className="ach__cert-body">
-                    <div className="ach__cert-info">
-                      <div className="ach__cert-header">
+                  {/* Card Info Footer */}
+                  <div className="ach__cert-footer">
+                    <div className="ach__cert-meta">
+                      <div className="ach__cert-badge-row">
                         <span
-                          className="ach__cert-issuer-badge"
+                          className="ach__cert-tag"
                           style={{
                             backgroundColor: `${cert.badgeColor || '#3B2FE0'}15`,
                             color: cert.badgeColor || '#3B2FE0',
@@ -212,18 +234,18 @@ export default function Achievements() {
                         </span>
                         <span className="caption">{cert.date}</span>
                       </div>
-                      <span className="ach__cert-name">{cert.name}</span>
+                      <h4 className="ach__cert-title">{cert.name}</h4>
                     </div>
 
-                    <div className="ach__cert-actions">
+                    <div className="ach__cert-btn-group">
                       {cert.image && (
                         <button
                           type="button"
-                          className="ach__cert-btn ach__cert-btn--preview"
+                          className="ach__action-btn ach__action-btn--view"
                           onClick={() => setSelectedImage(cert)}
-                          aria-label={`Preview ${cert.name} image`}
+                          aria-label={`View ${cert.name} certificate`}
                         >
-                          <Eye size={13} /> View Image
+                          <Eye size={13} /> View
                         </button>
                       )}
                       {cert.url && (
@@ -231,8 +253,8 @@ export default function Achievements() {
                           href={cert.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="ach__cert-btn ach__cert-btn--verify"
-                          aria-label={`Verify ${cert.name} certificate on ${cert.issuer}`}
+                          className="ach__action-btn ach__action-btn--verify"
+                          aria-label={`Verify ${cert.name} certificate`}
                         >
                           <ExternalLink size={13} /> Verify
                         </a>
@@ -338,7 +360,7 @@ export default function Achievements() {
         }
 
         .ach__section {
-          margin-bottom: 44px;
+          margin-bottom: 48px;
         }
 
         .ach__section-title {
@@ -348,7 +370,7 @@ export default function Achievements() {
           display: flex;
           align-items: center;
           gap: 8px;
-          margin-bottom: 20px;
+          margin-bottom: 24px;
           color: var(--color-text-primary);
         }
 
@@ -356,7 +378,7 @@ export default function Achievements() {
         .ach__hackathons {
           display: flex;
           flex-direction: column;
-          gap: 8px;
+          gap: 10px;
           max-width: 600px;
         }
 
@@ -366,7 +388,7 @@ export default function Achievements() {
           justify-content: space-between;
           padding: 14px 20px;
           background: var(--color-bg-secondary);
-          border-radius: 12px;
+          border-radius: 14px;
           border: 1px solid var(--color-border);
           transition: all 250ms var(--ease-out-expo);
         }
@@ -385,53 +407,68 @@ export default function Achievements() {
         .ach__certs-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 16px;
+          gap: 24px;
         }
 
-        .ach__cert {
+        /* Certificate Card with Identical Sizes */
+        .ach__cert-card {
           display: flex;
           flex-direction: column;
           background: var(--color-bg-primary);
-          border-radius: 16px;
+          border-radius: 20px;
           border: 1px solid var(--color-border);
           overflow: hidden;
           transition: all 300ms var(--ease-out-expo);
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+          height: 100%;
         }
 
-        .ach__cert:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-          border-color: rgba(59, 47, 224, 0.3);
+        .ach__cert-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+          border-color: rgba(59, 47, 224, 0.35);
         }
 
-        /* Certificate Thumbnail */
-        .ach__cert-thumb-wrapper {
+        /* Certificate Frame matching natural certificate proportions (4:3 ratio) */
+        .ach__cert-preview-frame {
           position: relative;
           width: 100%;
-          height: 180px;
-          background: #F8F9FA;
-          cursor: pointer;
+          aspect-ratio: 4 / 3;
+          background: #F4F4F6;
           overflow: hidden;
           border-bottom: 1px solid var(--color-border);
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
-        .ach__cert-thumb {
+        .ach__cert-image-holder {
+          position: relative;
           width: 100%;
           height: 100%;
-          object-fit: cover;
-          object-position: top center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #FFFFFF;
+        }
+
+        .ach__cert-img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          display: block;
           transition: transform 350ms var(--ease-out-expo);
         }
 
-        .ach__cert-thumb-wrapper:hover .ach__cert-thumb {
-          transform: scale(1.04);
+        .ach__cert-preview-frame:hover .ach__cert-img {
+          transform: scale(1.03);
         }
 
-        .ach__cert-thumb-overlay {
+        .ach__cert-overlay {
           position: absolute;
           inset: 0;
-          background: rgba(0, 0, 0, 0.4);
+          background: rgba(0, 0, 0, 0.45);
+          backdrop-filter: blur(2px);
           color: white;
           display: flex;
           align-items: center;
@@ -440,13 +477,86 @@ export default function Achievements() {
           transition: opacity 250ms ease;
         }
 
-        .ach__cert-thumb-wrapper:hover .ach__cert-thumb-overlay {
+        .ach__cert-preview-frame:hover .ach__cert-overlay {
           opacity: 1;
         }
 
-        /* Certificate Body */
-        .ach__cert-body {
-          padding: 16px 18px;
+        .ach__cert-overlay-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.8125rem;
+          font-weight: 600;
+          padding: 8px 16px;
+          background: white;
+          color: #111113;
+          border-radius: 100px;
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+          transform: translateY(6px);
+          transition: transform 250ms var(--ease-out-expo);
+        }
+
+        .ach__cert-preview-frame:hover .ach__cert-overlay-btn {
+          transform: translateY(0);
+        }
+
+        /* Certificate Placeholder Graphic */
+        .ach__cert-placeholder {
+          width: 100%;
+          height: 100%;
+          padding: 16px;
+          background: linear-gradient(135deg, #FBFBFB 0%, #F1F0EC 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .ach__cert-placeholder-border {
+          width: 100%;
+          height: 100%;
+          border: 1.5px dashed rgba(59, 47, 224, 0.25);
+          border-radius: 12px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 16px;
+          text-align: center;
+          gap: 6px;
+          background: rgba(255, 255, 255, 0.6);
+        }
+
+        .ach__cert-placeholder-seal {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          background: white;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 2px;
+        }
+
+        .ach__cert-placeholder-issuer {
+          font-size: 0.75rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+        }
+
+        .ach__cert-placeholder-title {
+          font-family: var(--font-display);
+          font-size: 0.875rem;
+          font-weight: 600;
+          color: var(--color-text-primary);
+          line-height: 1.3;
+          max-width: 90%;
+        }
+
+        /* Card Footer */
+        .ach__cert-footer {
+          padding: 16px 20px;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -454,20 +564,20 @@ export default function Achievements() {
           flex: 1;
         }
 
-        .ach__cert-info {
+        .ach__cert-meta {
           display: flex;
           flex-direction: column;
           gap: 6px;
         }
 
-        .ach__cert-header {
+        .ach__cert-badge-row {
           display: flex;
           align-items: center;
           justify-content: space-between;
           gap: 8px;
         }
 
-        .ach__cert-issuer-badge {
+        .ach__cert-tag {
           font-size: 0.6875rem;
           font-weight: 700;
           text-transform: uppercase;
@@ -476,28 +586,30 @@ export default function Achievements() {
           border-radius: 6px;
         }
 
-        .ach__cert-name {
+        .ach__cert-title {
+          font-family: var(--font-display);
           font-weight: 600;
           font-size: 0.9375rem;
           line-height: 1.4;
           color: var(--color-text-primary);
+          margin: 0;
         }
 
-        .ach__cert-actions {
+        .ach__cert-btn-group {
           display: flex;
           align-items: center;
           gap: 8px;
           margin-top: auto;
-          padding-top: 6px;
+          padding-top: 4px;
         }
 
-        .ach__cert-btn {
+        .ach__action-btn {
           display: inline-flex;
           align-items: center;
           gap: 5px;
           font-size: 0.75rem;
           font-weight: 600;
-          padding: 6px 12px;
+          padding: 6px 14px;
           border-radius: var(--radius-pill);
           text-decoration: none;
           transition: all 200ms ease;
@@ -506,24 +618,24 @@ export default function Achievements() {
           white-space: nowrap;
         }
 
-        .ach__cert-btn--preview {
+        .ach__action-btn--view {
           background: var(--color-bg-secondary);
           color: var(--color-text-primary);
           border: 1px solid var(--color-border);
         }
 
-        .ach__cert-btn--preview:hover {
+        .ach__action-btn--view:hover {
           background: rgba(59, 47, 224, 0.08);
           color: var(--color-accent-primary);
           border-color: var(--color-accent-primary);
         }
 
-        .ach__cert-btn--verify {
+        .ach__action-btn--verify {
           background: rgba(59, 47, 224, 0.08);
           color: var(--color-accent-primary);
         }
 
-        .ach__cert-btn--verify:hover {
+        .ach__action-btn--verify:hover {
           background: var(--color-accent-primary);
           color: white;
         }
@@ -567,7 +679,7 @@ export default function Achievements() {
           position: fixed;
           inset: 0;
           z-index: 20000;
-          background: rgba(0, 0, 0, 0.75);
+          background: rgba(0, 0, 0, 0.8);
           backdrop-filter: blur(8px);
           display: flex;
           align-items: center;
@@ -584,13 +696,13 @@ export default function Achievements() {
         .cert-modal-content {
           background: var(--color-bg-primary);
           border-radius: 20px;
-          max-width: 800px;
+          max-width: 860px;
           width: 100%;
           max-height: 90vh;
           display: flex;
           flex-direction: column;
           overflow: hidden;
-          box-shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
           border: 1px solid var(--color-border);
           animation: modalScaleIn 250ms cubic-bezier(0.22, 1, 0.36, 1);
         }
@@ -641,15 +753,15 @@ export default function Achievements() {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: #F4F4F6;
+          background: #0E0E10;
         }
 
         .cert-modal-image {
           max-width: 100%;
-          max-height: 60vh;
+          max-height: 65vh;
           object-fit: contain;
-          border-radius: 8px;
-          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+          border-radius: 6px;
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
         }
 
         .cert-modal-footer {
@@ -660,7 +772,7 @@ export default function Achievements() {
           background: var(--color-bg-primary);
         }
 
-        @media (max-width: 850px) {
+        @media (max-width: 900px) {
           .ach__certs-grid {
             grid-template-columns: 1fr;
           }
