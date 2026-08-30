@@ -1,7 +1,7 @@
-import { ArrowRight, Mail } from 'lucide-react';
+import { ArrowRight, Mail, FileText } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 
-export default function Hero() {
+export default function Hero({ onOpenResume }) {
   const handleScroll = (e, target) => {
     e.preventDefault();
     const el = document.querySelector(target);
@@ -39,24 +39,31 @@ export default function Hero() {
 
           <ScrollReveal delay={0.45}>
             <p className="body-text hero__intro">
-              Second-year CSE student exploring software development, web
-              technologies, and AI through hands-on projects and continuous
-              learning.
+              Second-year CSE student at Lovely Professional University exploring software development, 
+              full-stack web technologies, and AI through real-world projects and continuous learning.
             </p>
           </ScrollReveal>
 
           <ScrollReveal delay={0.55}>
             <div className="hero__actions">
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={onOpenResume}
+                aria-label="View and download Satyam Kumar's CV"
+              >
+                <FileText size={18} /> View CV / Resume
+              </button>
               <a
                 href="#projects"
-                className="btn btn-primary"
+                className="btn btn-secondary"
                 onClick={(e) => handleScroll(e, '#projects')}
               >
                 View Projects <ArrowRight size={18} />
               </a>
               <a
                 href="#contact"
-                className="btn btn-secondary"
+                className="btn btn-ghost"
                 onClick={(e) => handleScroll(e, '#contact')}
               >
                 <Mail size={18} /> Contact Me
@@ -75,12 +82,12 @@ export default function Hero() {
               <span className="hero__stat-label">Projects</span>
             </div>
             <div className="hero__stat">
-              <span className="hero__stat-number">3</span>
-              <span className="hero__stat-label">Hackathons</span>
+              <span className="hero__stat-number">8.02</span>
+              <span className="hero__stat-label">CGPA (LPU)</span>
             </div>
             <div className="hero__stat">
               <span className="hero__stat-number">11</span>
-              <span className="hero__stat-label">Certifications</span>
+              <span className="hero__stat-label">Certificates</span>
             </div>
           </div>
         </ScrollReveal>
@@ -173,6 +180,28 @@ export default function Hero() {
           display: flex;
           gap: 14px;
           flex-wrap: wrap;
+          align-items: center;
+        }
+
+        .btn-ghost {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 18px;
+          border-radius: var(--radius-btn, 12px);
+          font-size: 0.9375rem;
+          font-weight: 550;
+          color: var(--color-text-secondary, #333);
+          background: transparent;
+          border: 1px solid var(--color-border, #e5e4e0);
+          transition: all 200ms ease;
+          text-decoration: none;
+        }
+
+        .btn-ghost:hover {
+          background: rgba(0, 0, 0, 0.04);
+          border-color: var(--color-text-primary, #111);
+          color: var(--color-text-primary, #111);
         }
 
         /* Avatar & Stats */
@@ -250,10 +279,6 @@ export default function Hero() {
             border-radius: 24px;
           }
 
-          .hero__avatar-text {
-            font-size: 3.5rem;
-          }
-
           .hero__blob {
             width: 500px;
             height: 500px;
@@ -274,10 +299,6 @@ export default function Hero() {
           .hero__avatar {
             width: 160px;
             height: 160px;
-          }
-
-          .hero__avatar-text {
-            font-size: 2.5rem;
           }
 
           .hero__stats {

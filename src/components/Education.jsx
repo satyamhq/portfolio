@@ -1,38 +1,36 @@
-import { GraduationCap, MapPin, Calendar } from 'lucide-react';
+import { GraduationCap, MapPin, Calendar, Award } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 
 const education = [
   {
     institution: 'Lovely Professional University',
-    degree: 'B.Tech, Computer Science & Engineering',
-    period: '2025 – 2029',
-    location: 'Punjab, India',
+    degree: 'Bachelor of Technology – Computer Science and Engineering',
+    score: 'CGPA: 8.02',
+    period: 'Aug 2025 – Present',
+    location: 'Phagwara, Punjab',
     current: true,
     accent: 'indigo',
+    details: 'Core engineering coursework focusing on Data Structures & Algorithms, Object-Oriented Programming, and Software Engineering.',
   },
   {
     institution: 'Mount Carmel English School',
-    degree: 'Class 11th – 12th',
-    period: '2023 – 2025',
-    location: null,
+    degree: 'Intermediate (12th Grade) – Science (PCM)',
+    score: 'Percentage: 82%',
+    period: 'Mar 2023 – May 2025',
+    location: 'Purnia, Bihar',
     current: false,
     accent: 'coral',
+    details: 'Physics, Chemistry, and Mathematics foundation.',
   },
   {
-    institution: 'Saraswati Vidya Mandir, Purnia',
-    degree: 'Class 6th – 10th',
-    period: '2018 – 2023',
+    institution: 'Saraswati Vidya Mandir',
+    degree: 'Matriculation (10th Grade)',
+    score: 'Percentage: 85%',
+    period: 'Mar 2018 – May 2023',
     location: 'Purnia, Bihar',
     current: false,
     accent: 'mint',
-  },
-  {
-    institution: 'Saraswati Shishu Mandir, Purnia',
-    degree: 'LKG – Class 5th',
-    period: '2011 – 2018',
-    location: 'Purnia, Bihar',
-    current: false,
-    accent: 'coral',
+    details: 'Secondary school education with distinction.',
   },
 ];
 
@@ -49,7 +47,7 @@ export default function Education() {
         <ScrollReveal>
           <p className="caption edu__label">EDUCATION</p>
           <h2 className="section-heading edu__heading">
-            Academic journey
+            Academic journey & qualifications
           </h2>
         </ScrollReveal>
 
@@ -72,7 +70,12 @@ export default function Education() {
                     <div className="edu__header">
                       <div>
                         <h3 className="edu__institution">{edu.institution}</h3>
-                        <p className="muted-text">{edu.degree}</p>
+                        <p className="muted-text edu__degree">{edu.degree}</p>
+                        {edu.score && (
+                          <span className="edu__score">
+                            <Award size={13} /> {edu.score}
+                          </span>
+                        )}
                       </div>
                       <div className="edu__meta">
                         <span className="edu__period">
@@ -84,6 +87,9 @@ export default function Education() {
                         )}
                       </div>
                     </div>
+                    {edu.details && (
+                      <p className="caption edu__details-text">{edu.details}</p>
+                    )}
                     {edu.location && (
                       <span className="caption edu__location">
                         <MapPin size={12} /> {edu.location}
@@ -111,7 +117,7 @@ export default function Education() {
         }
 
         .edu__timeline {
-          max-width: 700px;
+          max-width: 750px;
         }
 
         .edu__item {
@@ -163,6 +169,30 @@ export default function Education() {
           font-weight: 600;
         }
 
+        .edu__degree {
+          font-size: 0.875rem;
+          margin-top: 2px;
+        }
+
+        .edu__score {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          font-size: 0.78125rem;
+          font-weight: 600;
+          color: var(--color-accent-primary);
+          background: rgba(59, 47, 224, 0.06);
+          padding: 3px 8px;
+          border-radius: var(--radius-pill);
+          margin-top: 6px;
+        }
+
+        .edu__details-text {
+          margin-top: 6px;
+          margin-bottom: 6px;
+          color: var(--color-text-secondary);
+        }
+
         .edu__meta {
           display: flex;
           align-items: center;
@@ -194,6 +224,8 @@ export default function Education() {
           display: inline-flex;
           align-items: center;
           gap: 4px;
+          margin-top: 4px;
+          color: var(--color-text-muted);
         }
 
         @media (max-width: 640px) {

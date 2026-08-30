@@ -1,4 +1,5 @@
 import { ExternalLink } from 'lucide-react';
+import ScrollReveal from './ScrollReveal';
 
 const GithubIcon = ({ size = 16 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
@@ -6,78 +7,93 @@ const GithubIcon = ({ size = 16 }) => (
   </svg>
 );
 
-import ScrollReveal from './ScrollReveal';
-
 const projects = [
   {
-    title: 'Greenhouse Automation',
+    title: 'Hackerzone – Autonomous AI Interview Platform',
+    date: "Feb '26",
     description:
-      'IoT/embedded project that automates greenhouse environmental conditions — monitoring temperature, humidity, and soil moisture using Arduino sensors and actuators.',
-    problem: 'Manual greenhouse management is time-consuming and error-prone, leading to crop loss.',
-    tech: ['Arduino', 'C++', 'IoT', 'Sensors'],
+      'A production-grade AI interview platform supporting autonomous technical and behavioral interviews through voice and chat-based interactions.',
+    highlights: [
+      'Simulates live technical and behavioral interviews with real-time audio and text streaming.',
+      'Integrated Google Gemini & OpenAI, WebSockets, Monaco Editor, and Excalidraw for real-time live coding, whiteboarding, automated scoring, and analytics.',
+    ],
+    tech: ['Next.js', 'TypeScript', 'Google Gemini', 'OpenAI', 'WebSockets', 'Supabase', 'Tailwind CSS'],
+    github: 'https://github.com/satyamhq/hackerzone-ai-interview',
+    demo: null,
+    accent: 'indigo',
+    featured: true,
+  },
+  {
+    title: 'Curely – AI Healthcare Marketplace & Telemedicine',
+    date: "Mar '25",
+    description:
+      'A comprehensive healthcare platform connecting patients, doctors, pharmacies, and diagnostic laboratories through specialized role-based dashboards.',
+    highlights: [
+      'AI-powered symptom analysis, smart doctor matching, appointment booking, pharmacy ordering, and diagnostic tests.',
+      'Implemented robust authentication, database management, provider verification, and admin governance with Supabase & PostgreSQL.',
+    ],
+    tech: ['Next.js', 'TypeScript', 'OpenAI API', 'Supabase', 'PostgreSQL', 'Zustand', 'Tailwind CSS'],
+    github: 'https://github.com/satyamhq/Curely',
+    demo: null,
+    accent: 'coral',
+    featured: true,
+  },
+  {
+    title: 'Agri1 – AI-Powered Personal Farming Assistant',
+    date: "Oct '24",
+    description:
+      'An offline-first Progressive Web App built for Indian farmers with farm management, crop tracking, weather intelligence, and mandi-price tracking.',
+    highlights: [
+      'Real-time mandi market prices, weather forecasting, distance-based mandi sorting, and agricultural advisory.',
+      'Achieved 92% sorting accuracy, reduced misclassification by 30%, and enabled <1s object detection & sorting.',
+    ],
+    tech: ['HTML5', 'CSS3', 'JavaScript', 'IndexedDB', 'Service Worker', 'PWA', 'APIs'],
+    github: 'https://github.com/satyamhq/ai-powered-personal-farming-assistant',
+    demo: null,
+    accent: 'mint',
+    featured: true,
+  },
+  {
+    title: 'Greenhouse Automation',
+    date: '2025',
+    description:
+      'IoT and embedded systems project automating greenhouse environmental parameters — monitoring temperature, humidity, and soil moisture with Arduino sensors and actuators.',
+    highlights: [
+      'Automated climate control algorithms for optimal plant growth.',
+      'Hardware sensors and relay control for water pumps and ventilation.',
+    ],
+    tech: ['Arduino', 'C++', 'IoT', 'Sensors', 'Embedded C'],
     github: 'https://github.com/satyamhq/greenhouse-automation-arduino',
     demo: null,
     accent: 'mint',
   },
   {
-    title: 'HackerZone AI Interview',
-    description:
-      'An AI-powered mock interview tool that simulates technical interviews, providing real-time feedback and assessment to help candidates prepare effectively.',
-    problem: 'Lack of accessible, personalized interview practice for tech candidates.',
-    tech: ['AI/ML', 'JavaScript', 'Web'],
-    github: 'https://github.com/satyamhq/hackerzone-ai-interview',
-    demo: null,
-    accent: 'indigo',
-  },
-  {
-    title: 'Curely',
-    description: null,
-    problem: null,
-    tech: [],
-    github: 'https://github.com/satyamhq/Curely',
-    demo: null,
-    placeholder: true,
-    accent: 'coral',
-  },
-  {
-    title: 'HackerZone',
-    description: null,
-    problem: null,
-    tech: [],
-    github: 'https://github.com/satyamhq/hackerzone',
-    demo: null,
-    placeholder: true,
-    accent: 'indigo',
-  },
-  {
     title: '61stSec',
-    description: null,
-    problem: null,
-    tech: [],
+    date: '2025',
+    description:
+      'Cybersecurity and system hardening utility toolkit focusing on rapid vulnerability assessment, automated network analysis, and security auditing.',
+    highlights: [
+      'Network probing and protocol analysis tools integration.',
+      'Automated diagnostic scripts for Linux system administration.',
+    ],
+    tech: ['Python', 'Linux', 'Networking', 'Cybersecurity'],
     github: 'https://github.com/satyamhq/61stsec',
     demo: null,
-    placeholder: true,
-    accent: 'coral',
-  },
-  {
-    title: 'AI Farming Assistant',
-    description:
-      'An AI-powered personal farming assistant that combines agricultural data with ML/LLM guidance to help farmers make better decisions about crops, soil, and weather.',
-    problem: 'Small-scale farmers lack access to expert agricultural advice and data-driven insights.',
-    tech: ['Python', 'AI/ML', 'LLM'],
-    github: 'https://github.com/satyamhq/ai-powered-personal-farming-assistant',
-    demo: null,
-    accent: 'mint',
+    accent: 'indigo',
   },
   {
     title: 'Startflow',
-    description: null,
-    problem: null,
-    tech: [],
+    date: '2025',
+    description:
+      'Workflow management and productivity tool engineered for startup founders and agile teams to manage sprints, tasks, and product launch pipelines.',
+    highlights: [
+      'Kanban board and sprint planning interfaces.',
+      'Lightweight local-first persistence and responsive UI.',
+    ],
+    tech: ['JavaScript', 'React', 'Tailwind CSS', 'Vite'],
     github: 'https://github.com/satyamhq/Startflow',
     demo: null,
-    placeholder: true,
-    accent: 'indigo',
+    accent: 'coral',
   },
 ];
 
@@ -94,48 +110,36 @@ function ProjectCard({ project, index }) {
     <ScrollReveal delay={index * 0.08}>
       <article className="project-card card">
         <div className="project-card__header">
-          <h3 className="card-title">{project.title}</h3>
-          {project.placeholder && (
-            <span className="badge badge-placeholder">Add description</span>
+          <div>
+            <h3 className="card-title">{project.title}</h3>
+            {project.date && <span className="project-card__date">{project.date}</span>}
+          </div>
+          {project.featured && (
+            <span className="badge badge-featured">Featured</span>
           )}
         </div>
 
-        {project.description ? (
-          <p className="muted-text project-card__desc">{project.description}</p>
-        ) : (
-          <p className="muted-text project-card__desc project-card__desc--placeholder">
-            Description coming soon — check the GitHub repo for details.
-          </p>
-        )}
+        <p className="muted-text project-card__desc">{project.description}</p>
 
-        {project.problem && (
-          <div className="project-card__problem">
-            <span className="caption" style={{ fontWeight: 600 }}>Problem:</span>
-            <span className="caption"> {project.problem}</span>
-          </div>
-        )}
-
-        {project.tech.length > 0 && (
-          <div className="project-card__tech">
-            {project.tech.map((t) => (
-              <span
-                key={t}
-                className="project-card__tech-chip"
-                style={{ background: color.bg, color: color.text, borderColor: color.border }}
-              >
-                {t}
-              </span>
+        {project.highlights && project.highlights.length > 0 && (
+          <ul className="project-card__highlights">
+            {project.highlights.map((h, i) => (
+              <li key={i}>{h}</li>
             ))}
-          </div>
+          </ul>
         )}
 
-        {project.tech.length === 0 && (
-          <div className="project-card__tech">
-            <span className="project-card__tech-chip" style={{ background: 'rgba(107,107,112,0.06)', color: '#6B6B70', borderColor: 'rgba(107,107,112,0.15)' }}>
-              Add tech stack
+        <div className="project-card__tech">
+          {project.tech.map((t) => (
+            <span
+              key={t}
+              className="project-card__tech-chip"
+              style={{ background: color.bg, color: color.text, borderColor: color.border }}
+            >
+              {t}
             </span>
-          </div>
-        )}
+          ))}
+        </div>
 
         <div className="project-card__actions">
           <a
@@ -145,7 +149,7 @@ function ProjectCard({ project, index }) {
             className="btn btn-secondary btn-sm"
             aria-label={`View ${project.title} on GitHub`}
           >
-            <GithubIcon size={16} /> GitHub
+            <GithubIcon size={16} /> GitHub Repo
           </a>
           {project.demo && (
             <a
@@ -171,10 +175,10 @@ export default function Projects() {
         <ScrollReveal>
           <p className="caption projects__label">PROJECTS</p>
           <h2 className="section-heading projects__heading">
-            Things I've built
+            Featured projects & software
           </h2>
           <p className="body-text projects__sub">
-            From IoT systems to AI-powered tools — each project is a step toward solving real problems.
+            From autonomous AI interview platforms and healthcare marketplaces to offline PWAs and IoT embedded systems.
           </p>
         </ScrollReveal>
 
@@ -201,7 +205,7 @@ export default function Projects() {
         .projects__sub {
           color: var(--color-text-muted);
           margin-bottom: 48px;
-          max-width: 520px;
+          max-width: 580px;
         }
 
         .projects__grid {
@@ -214,6 +218,7 @@ export default function Projects() {
           display: flex;
           flex-direction: column;
           height: 100%;
+          border-radius: 18px;
         }
 
         .project-card__header {
@@ -224,21 +229,40 @@ export default function Projects() {
           margin-bottom: 12px;
         }
 
+        .project-card__date {
+          font-size: 0.75rem;
+          font-weight: 600;
+          color: var(--color-text-muted);
+          display: inline-block;
+          margin-top: 2px;
+        }
+
+        .badge-featured {
+          background: rgba(59, 47, 224, 0.08);
+          color: var(--color-accent-primary);
+          font-size: 0.6875rem;
+          font-weight: 600;
+          padding: 3px 8px;
+          border-radius: 999px;
+          white-space: nowrap;
+        }
+
         .project-card__desc {
-          margin-bottom: 16px;
-          flex-grow: 1;
+          margin-bottom: 12px;
+          font-size: 0.9375rem;
+          line-height: 1.55;
         }
 
-        .project-card__desc--placeholder {
-          font-style: italic;
-          opacity: 0.7;
-        }
-
-        .project-card__problem {
-          background: var(--color-bg-secondary);
-          padding: 10px 14px;
-          border-radius: 10px;
+        .project-card__highlights {
+          list-style: disc;
+          padding-left: 18px;
           margin-bottom: 16px;
+          font-size: 0.8125rem;
+          color: var(--color-text-secondary);
+          line-height: 1.5;
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
         }
 
         .project-card__tech {
@@ -246,6 +270,7 @@ export default function Projects() {
           flex-wrap: wrap;
           gap: 6px;
           margin-bottom: 20px;
+          margin-top: auto;
         }
 
         .project-card__tech-chip {
@@ -259,7 +284,6 @@ export default function Projects() {
         .project-card__actions {
           display: flex;
           gap: 10px;
-          margin-top: auto;
         }
 
         @media (max-width: 1024px) {

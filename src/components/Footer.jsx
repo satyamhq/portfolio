@@ -25,6 +25,7 @@ const footerNavGroups = [
   {
     title: 'More',
     links: [
+      { label: 'Curriculum Vitae', isResume: true },
       { label: 'Startups', href: '#startups' },
       { label: 'Skills', href: '#skills' },
       { label: 'Achievements', href: '#achievements' },
@@ -35,6 +36,7 @@ const footerNavGroups = [
     title: 'Connect',
     links: [
       { label: 'Email', href: 'mailto:satyam31sk@gmail.com', external: true },
+      { label: 'Mobile (+91-6205844155)', href: 'tel:+916205844155', external: true },
       { label: 'LinkedIn', href: 'https://linkedin.com/in/satyamhq', external: true },
       { label: 'GitHub', href: 'https://github.com/satyamhq', external: true },
       { label: 'Savify', href: 'https://savify.money', external: true },
@@ -48,9 +50,9 @@ const socialIcons = [
   { icon: <Mail size={20} />, href: 'mailto:satyam31sk@gmail.com', label: 'Email' },
 ];
 
-export default function Footer() {
+export default function Footer({ onOpenResume }) {
   const handleNavClick = (e, href) => {
-    if (href.startsWith('#')) {
+    if (href && href.startsWith('#')) {
       e.preventDefault();
       const el = document.querySelector(href);
       if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -77,16 +79,27 @@ export default function Footer() {
                 <ul className="footer__nav-list">
                   {group.links.map((link) => (
                     <li key={link.label}>
-                      <a
-                        href={link.href}
-                        className="footer__nav-link"
-                        onClick={(e) => handleNavClick(e, link.href)}
-                        {...(link.external
-                          ? { target: '_blank', rel: 'noopener noreferrer' }
-                          : {})}
-                      >
-                        {link.label}
-                      </a>
+                      {link.isResume ? (
+                        <button
+                          type="button"
+                          className="footer__nav-link"
+                          onClick={onOpenResume}
+                          style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', textAlign: 'left', font: 'inherit' }}
+                        >
+                          {link.label}
+                        </button>
+                      ) : (
+                        <a
+                          href={link.href}
+                          className="footer__nav-link"
+                          onClick={(e) => handleNavClick(e, link.href)}
+                          {...(link.external
+                            ? { target: '_blank', rel: 'noopener noreferrer' }
+                            : {})}
+                        >
+                          {link.label}
+                        </a>
+                      )}
                     </li>
                   ))}
                 </ul>

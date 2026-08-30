@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Satyam Kumar - Resume / CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-serif: 'Merriweather', Georgia, serif;
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --color-text: #1a1a1a;
+      --color-muted: #4a4a4a;
+      --color-link: #0044cc;
+      --color-border: #222222;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f5f5f7;
+      font-family: var(--font-serif);
+      color: var(--color-text);
+      line-height: 1.35;
+      font-size: 13.5px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .action-bar {
+      width: 100%;
+      max-width: 820px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      background: #ffffff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      font-family: var(--font-sans);
+    }
+
+    .action-bar h2 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #111;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #3b2fe0;
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #2c20c0;
+    }
+
+    .btn-secondary {
+      background: #eef0f8;
+      color: #3b2fe0;
+    }
+
+    .btn-secondary:hover {
+      background: #e0e4f5;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 820px;
+      background: #ffffff;
+      padding: 44px 50px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      border-radius: 4px;
+    }
+
+    /* Header */
+    .header {
+      margin-bottom: 12px;
+    }
+
+    .name {
+      font-size: 26px;
+      font-weight: 700;
+      color: #111111;
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      row-gap: 2px;
+      font-size: 12.5px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 4px;
+    }
+
+    .contact-label {
+      font-weight: 600;
+    }
+
+    .contact-item a {
+      color: var(--color-link);
+      text-decoration: underline;
+    }
+
+    /* Sections */
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 2px;
+      margin-top: 14px;
+      margin-bottom: 8px;
+    }
+
+    /* Skills */
+    .skills-table {
+      width: 100%;
+      font-size: 12.5px;
+      border-collapse: collapse;
+    }
+
+    .skills-table td {
+      padding: 2px 0;
+      vertical-align: top;
+    }
+
+    .skills-category {
+      font-weight: 700;
+      width: 130px;
+    }
+
+    /* Items / Projects / Experience */
+    .item {
+      margin-bottom: 10px;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+
+    .item-title {
+      font-weight: 700;
+    }
+
+    .item-title a {
+      color: var(--color-link);
+      text-decoration: underline;
+      font-weight: 400;
+    }
+
+    .item-date {
+      font-size: 12px;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .item-subtitle {
+      font-style: italic;
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+
+    ul.bullets {
+      list-style-type: disc;
+      padding-left: 18px;
+      margin: 2px 0;
+      font-size: 12.5px;
+    }
+
+    ul.bullets li {
+      margin-bottom: 2px;
+      line-height: 1.35;
+    }
+
+    .tech-stack {
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .tech-stack strong {
+      font-weight: 700;
+    }
+
+    /* Simple rows */
+    .row-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 12.5px;
+      padding: 1.5px 0;
+    }
+
+    .row-item a {
+      color: var(--color-link);
+      text-decoration: underline;
+    }
+
+    .edu-item {
+      margin-bottom: 6px;
+    }
+
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .edu-details {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+      }
+      .action-bar {
+        display: none !important;
+      }
+      .page {
+        box-shadow: none;
+        padding: 20px 30px;
+        max-width: 100%;
+      }
+      a {
+        text-decoration: none !important;
+        color: #000000 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="action-bar">
+    <h2>Satyam Kumar — Official Resume</h2>
+    <div class="btn-group">
+      <button onclick="window.print()" class="btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        Print / Save as PDF
+      </button>
+      <a href="/" class="btn btn-secondary">
+        Back to Portfolio
+      </a>
+    </div>
+  </div>
+
+  <div class="page">
+    <!-- Header -->
+    <header class="header">
+      <h1 class="name">Satyam Kumar</h1>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <span class="contact-label">LinkedIn:</span>
+          <a href="https://www.linkedin.com/in/satyamhq" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/satyamhq</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Email:</span>
+          <a href="mailto:satyam31sk@gmail.com">satyam31sk@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">GitHub:</span>
+          <a href="https://github.com/satyamhq" target="_blank" rel="noopener noreferrer">https://github.com/satyamhq</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Mobile:</span>
+          <span>+91 - 6205844155</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Skills -->
+    <section>
+      <h2 class="section-title">SKILLS</h2>
+      <table class="skills-table">
+        <tr>
+          <td class="skills-category">Languages:</td>
+          <td>C, C++, Python, JavaScript, HTML, CSS</td>
+        </tr>
+        <tr>
+          <td class="skills-category">Tools/Platforms:</td>
+          <td>Kali Linux, Metasploit, BurpSuite, Nmap, Wireshark, Hydra</td>
+        </tr>
+        <tr>
+          <td class="skills-category">Frameworks:</td>
+          <td>Bootstrap, NodeJS, ExpressJS</td>
+        </tr>
+        <tr>
+          <td class="skills-category">Soft Skills:</td>
+          <td>Adaptability, Problem-Solving, Team Player, Leadership, Time Management</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- Projects -->
+    <section>
+      <h2 class="section-title">PROJECTS</h2>
+      
+      <!-- Project 1 -->
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">Hackerzone – Autonomous AI Interview Platform | <a href="https://github.com/satyamhq/hackerzone-ai-interview" target="_blank" rel="noopener noreferrer">Github</a></span>
+          <span class="item-date">Feb' 26</span>
+        </div>
+        <ul class="bullets">
+          <li>Built a production-grade AI interview platform supporting autonomous technical and behavioral interviews through voice and chat-based interactions.</li>
+          <li>Integrated Google Gemini/OpenAI, WebSockets, Monaco Editor, and Excalidraw for real-time interviews, live coding, whiteboarding, automated scoring, and analytics.</li>
+        </ul>
+        <div class="tech-stack"><strong>Tech:</strong> Next.js, TypeScript, Google Gemini, OpenAI, WebSockets, Supabase, Tailwind CSS</div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">Curely – AI Healthcare Marketplace & Telemedicine Platform | <a href="https://github.com/satyamhq/Curely" target="_blank" rel="noopener noreferrer">Github</a></span>
+          <span class="item-date">Mar' 25</span>
+        </div>
+        <ul class="bullets">
+          <li>Developed a healthcare platform connecting patients, doctors, pharmacies, and diagnostic laboratories through role-based dashboards.</li>
+          <li>Integrated AI-powered symptom analysis and doctor matching, along with appointment booking, pharmacy ordering, diagnostic tests, and health-record management.</li>
+          <li>Implemented authentication, database management, provider verification, and admin governance using Supabase.</li>
+        </ul>
+        <div class="tech-stack"><strong>Tech:</strong> Next.js, TypeScript, OpenAI API, Supabase, PostgreSQL, Zustand, Tailwind CSS</div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">Agri1 – AI-Powered Personal Farming Assistant | <a href="https://github.com/satyamhq/ai-powered-personal-farming-assistant" target="_blank" rel="noopener noreferrer">Github</a></span>
+          <span class="item-date">Oct' 24</span>
+        </div>
+        <ul class="bullets">
+          <li>Built an offline-first Progressive Web App for Indian farmers with farm management, crop tracking, weather intelligence, and mandi-price information.</li>
+          <li>Integrated real-time market prices, weather forecasting, distance-based mandi sorting, and agricultural advisory features.</li>
+          <li>Achieved 92% sorting accuracy, reduced misclassification by 30%, and enabled &lt;1s object detection & sorting.</li>
+        </ul>
+        <div class="tech-stack"><strong>Tech:</strong> HTML5, CSS3, JavaScript, IndexedDB, Service Worker, PWA, APIs</div>
+      </div>
+    </section>
+
+    <!-- Training -->
+    <section>
+      <h2 class="section-title">TRAINING</h2>
+      <div class="item">
+        <div class="item-header">
+          <span class="item-title">Lovely Professional University | <a href="#education">Certificate</a></span>
+          <span class="item-date">Jan' 26 - May' 26</span>
+        </div>
+        <div class="item-subtitle">C/C++ Programming – Summer Training</div>
+        <ul class="bullets">
+          <li>Developed a strong foundation in C/C++ programming, focusing on core programming concepts, problem-solving techniques, and structured program development.</li>
+          <li>Gained hands-on experience with variables, data types, conditional statements, loops, functions, arrays, pointers, structures, and object-oriented programming concepts.</li>
+        </ul>
+        <div class="tech-stack"><strong>Tech:</strong> C, C++</div>
+      </div>
+    </section>
+
+    <!-- Certificates -->
+    <section>
+      <h2 class="section-title">CERTIFICATES</h2>
+      <div class="row-item">
+        <span>Crash Course on Python | <a href="https://coursera.org/account/accomplishments/verify/7HH1JUIJ5519" target="_blank" rel="noopener noreferrer">Google</a></span>
+        <span class="item-date">Nov' 25</span>
+      </div>
+      <div class="row-item">
+        <span>Introduction to Front-End Development | <a href="https://coursera.org/account/accomplishments/verify/CYAPZ7X28IRK" target="_blank" rel="noopener noreferrer">Meta</a></span>
+        <span class="item-date">Jan' 26</span>
+      </div>
+      <div class="row-item">
+        <span>Programming with JavaScript | <a href="https://coursera.org/account/accomplishments/verify/181ZTYSWMNW5" target="_blank" rel="noopener noreferrer">Meta</a></span>
+        <span class="item-date">Feb' 26</span>
+      </div>
+      <div class="row-item">
+        <span>Version Control | <a href="https://coursera.org/account/accomplishments/verify/7CR28Y1XZIOL" target="_blank" rel="noopener noreferrer">Meta</a></span>
+        <span class="item-date">Mar' 26</span>
+      </div>
+      <div class="row-item">
+        <span>Introduction to Model Context Protocol | <a href="https://verify.skilljar.com/c/38m7f2if3crd" target="_blank" rel="noopener noreferrer">Anthropic</a></span>
+        <span class="item-date">April' 26</span>
+      </div>
+    </section>
+
+    <!-- Achievements -->
+    <section>
+      <h2 class="section-title">ACHIEVEMENTS</h2>
+      <div class="row-item">
+        <span>100 DSA questions <a href="https://leetcode.com/satyamhq" target="_blank" rel="noopener noreferrer">LeetCode</a></span>
+        <span class="item-date">Mar' 26</span>
+      </div>
+      <div class="row-item">
+        <span>31 Points <a href="https://hackerearth.com/@satyamhq" target="_blank" rel="noopener noreferrer">HackerEarth</a></span>
+        <span class="item-date">Mar' 26</span>
+      </div>
+      <div class="row-item">
+        <span>3 star rating in Python on <a href="https://hackerrank.com/satyamhq" target="_blank" rel="noopener noreferrer">HackerRank</a></span>
+        <span class="item-date">Apr' 24</span>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section>
+      <h2 class="section-title">EDUCATION</h2>
+      <div class="edu-item">
+        <div class="edu-header">
+          <span>Lovely Professional University</span>
+          <span>Phagwara, Punjab</span>
+        </div>
+        <div class="edu-details">
+          <span>Bachelor of Technology - Computer Science and Engineering; CGPA: 8.02</span>
+          <span>Aug' 25 – Present</span>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-header">
+          <span>Mount Carmel English School</span>
+          <span>Purnia, Bihar</span>
+        </div>
+        <div class="edu-details">
+          <span>Intermediate - PCM Percentage: 82%</span>
+          <span>Mar' 23 – May' 25</span>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-header">
+          <span>Saraswati Vidya Mandir</span>
+          <span>Purnia, Bihar</span>
+        </div>
+        <div class="edu-details">
+          <span>Matriculation - Percentage: 85%</span>
+          <span>Mar' 18 – May' 23</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>

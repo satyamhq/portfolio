@@ -3,33 +3,28 @@ import ScrollReveal from './ScrollReveal';
 const skillCategories = [
   {
     title: 'Languages',
-    skills: ['Java', 'C#', 'C++', 'C', 'Python', 'JavaScript'],
+    skills: ['C', 'C++', 'Python', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'SQL'],
     accent: '#3B2FE0',
   },
   {
-    title: 'Web',
-    skills: ['HTML', 'CSS', 'Full-Stack Development'],
+    title: 'Frameworks & Libraries',
+    skills: ['Next.js', 'React', 'NodeJS', 'ExpressJS', 'Bootstrap', 'Tailwind CSS', 'Zustand'],
     accent: '#7C4DFF',
   },
   {
-    title: 'Data & Systems',
-    skills: ['MySQL', 'SQL', 'DBMS', 'Linux System Administration'],
-    accent: '#00E0A4',
-  },
-  {
-    title: 'Tools',
-    skills: ['Git', 'GitHub', 'Version Control', 'Microsoft Excel'],
+    title: 'Tools & Platforms',
+    skills: ['Kali Linux', 'Metasploit', 'BurpSuite', 'Nmap', 'Wireshark', 'Hydra', 'Git', 'GitHub', 'Supabase', 'PostgreSQL', 'Monaco Editor'],
     accent: '#FF5A3C',
   },
   {
-    title: 'AI / ML',
-    skills: ['Emerging — Anthropic MCP Certified'],
-    accent: '#3B2FE0',
+    title: 'AI & Emerging Tech',
+    skills: ['Google Gemini API', 'OpenAI API', 'Anthropic MCP', 'WebSockets', 'PWA / Service Workers', 'Excalidraw'],
+    accent: '#00C28E',
   },
   {
     title: 'Soft Skills',
-    skills: ['Leadership', 'Time Management', 'Project Management', 'Communication'],
-    accent: '#6B6B70',
+    skills: ['Adaptability', 'Problem-Solving', 'Team Player', 'Leadership', 'Time Management'],
+    accent: '#3B2FE0',
   },
 ];
 
@@ -40,8 +35,11 @@ export default function Skills() {
         <ScrollReveal>
           <p className="caption skills__label">SKILLS</p>
           <h2 className="section-heading skills__heading">
-            My technical toolkit
+            Technical toolkit & proficiencies
           </h2>
+          <p className="body-text skills__sub">
+            Core programming languages, cybersecurity & penetration testing tools, full-stack frameworks, and leadership abilities.
+          </p>
         </ScrollReveal>
 
         <div className="skills__grid">
@@ -76,7 +74,13 @@ export default function Skills() {
         }
 
         .skills__heading {
+          margin-bottom: 12px;
+        }
+
+        .skills__sub {
+          color: var(--color-text-muted);
           margin-bottom: 48px;
+          max-width: 580px;
         }
 
         .skills__grid {
@@ -91,6 +95,8 @@ export default function Skills() {
           padding: 24px;
           border: 1px solid var(--color-border);
           transition: all 300ms var(--ease-out-expo);
+          display: flex;
+          flex-direction: column;
         }
 
         .skills__category:hover {
@@ -113,6 +119,7 @@ export default function Skills() {
           height: 8px;
           border-radius: 50%;
           display: inline-block;
+          flex-shrink: 0;
         }
 
         .skills__chips {
@@ -121,7 +128,7 @@ export default function Skills() {
           gap: 8px;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 1024px) {
           .skills__grid {
             grid-template-columns: repeat(2, 1fr);
           }

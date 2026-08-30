@@ -1,15 +1,25 @@
-import { Rocket, Trophy, BookOpen, Calendar } from 'lucide-react';
+import { Rocket, Trophy, BookOpen, Code, Calendar } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 
 const experiences = [
   {
+    role: 'C/C++ Programming – Summer Training',
+    org: 'Lovely Professional University | Certificate',
+    period: "Jan '26 – May '26",
+    description:
+      'Developed a strong foundation in C/C++ programming, focusing on core programming concepts, problem-solving techniques, and structured program development. Gained hands-on experience with variables, data types, conditional statements, loops, functions, arrays, pointers, structures, and object-oriented programming concepts.',
+    icon: <Code size={20} />,
+    accent: 'indigo',
+    current: true,
+  },
+  {
     role: 'Founder & Builder',
-    org: 'Savify',
+    org: 'Savify (savify.money)',
     period: '2025 – Present',
     description:
-      'Founded and building Savify (savify.money) — a verified student cashback and discounts platform for India. Responsible for product vision, development, and growth strategy.',
+      'Founded and building Savify — a verified student cashback and discounts platform for India. Responsible for product vision, development, and growth strategy.',
     icon: <Rocket size={20} />,
-    accent: 'indigo',
+    accent: 'coral',
     current: true,
   },
   {
@@ -19,17 +29,17 @@ const experiences = [
     description:
       'Actively participating in hackathons to sharpen problem-solving skills and build under pressure. Competed in Arena WEB-A-THON 2.0, Cognitia\'26 ReSurgence, and Hack Ai S2.',
     icon: <Trophy size={20} />,
-    accent: 'coral',
+    accent: 'mint',
     current: true,
   },
   {
-    role: 'Self-Directed Learner',
-    org: 'Continuous Learning',
-    period: '2025 – Present',
+    role: 'Continuous Certification & Practice',
+    org: 'Google · Meta · Anthropic',
+    period: '2024 – Present',
     description:
-      'Pursuing certifications from Google, Meta, Anthropic, and LinkedIn Learning. Building a strong foundation in DSA, system design, and emerging AI technologies alongside formal coursework.',
+      'Completed certifications in Python (Google), Front-End, JavaScript, Version Control (Meta), and Model Context Protocol (Anthropic). Active competitive programmer across LeetCode, HackerRank, and HackerEarth.',
     icon: <BookOpen size={20} />,
-    accent: 'mint',
+    accent: 'indigo',
     current: true,
   },
 ];
@@ -45,12 +55,12 @@ export default function Experience() {
     <section id="experience" className="section-padding" aria-label="Experience">
       <div className="container">
         <ScrollReveal>
-          <p className="caption exp__label">EXPERIENCE</p>
+          <p className="caption exp__label">EXPERIENCE & TRAINING</p>
           <h2 className="section-heading exp__heading">
             Where I've been putting<br />in the work
           </h2>
           <p className="body-text exp__sub">
-            No traditional internships yet — just real building, competing, and continuous learning.
+            Formal technical summer training, startup building, hackathon competitions, and continuous learning.
           </p>
         </ScrollReveal>
 
@@ -106,11 +116,11 @@ export default function Experience() {
         .exp__sub {
           color: var(--color-text-muted);
           margin-bottom: 48px;
-          max-width: 500px;
+          max-width: 540px;
         }
 
         .exp__timeline {
-          max-width: 720px;
+          max-width: 740px;
         }
 
         .exp__item {

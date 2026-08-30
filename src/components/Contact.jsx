@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, Send, CheckCircle, AlertCircle, Phone, FileText, ExternalLink } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 
 const GithubIcon = ({ size = 20 }) => (
@@ -14,13 +14,18 @@ const LinkedinIcon = ({ size = 20 }) => (
   </svg>
 );
 
-
 const socialLinks = [
   {
     name: 'Email',
     url: 'mailto:satyam31sk@gmail.com',
     icon: <Mail size={20} />,
     label: 'satyam31sk@gmail.com',
+  },
+  {
+    name: 'Mobile',
+    url: 'tel:+916205844155',
+    icon: <Phone size={20} />,
+    label: '+91 - 6205844155',
   },
   {
     name: 'LinkedIn',
@@ -36,7 +41,7 @@ const socialLinks = [
   },
 ];
 
-export default function Contact() {
+export default function Contact({ onOpenResume }) {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState(null); // 'success' | 'error' | null
   const [errors, setErrors] = useState({});
@@ -187,6 +192,28 @@ export default function Contact() {
                     </div>
                   </a>
                 ))}
+              </div>
+
+              <div className="contact__divider" />
+
+              <div className="contact__resume-card">
+                <div className="contact__resume-info">
+                  <span className="contact__resume-icon">
+                    <FileText size={20} />
+                  </span>
+                  <div>
+                    <h4 className="contact__resume-title">Curriculum Vitae</h4>
+                    <p className="caption">Verified Academic & Professional Resume</p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  className="btn btn-secondary btn-sm"
+                  onClick={onOpenResume}
+                  style={{ width: '100%', marginTop: '12px', justifyContent: 'center' }}
+                >
+                  <FileText size={15} /> View & Download CV
+                </button>
               </div>
 
               <div className="contact__divider" />
@@ -367,6 +394,39 @@ export default function Contact() {
           font-weight: 500;
           font-size: 0.9375rem;
           display: block;
+        }
+
+        .contact__resume-card {
+          background: var(--color-bg-primary);
+          border: 1px solid var(--color-border);
+          border-radius: 14px;
+          padding: 16px;
+        }
+
+        .contact__resume-info {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .contact__resume-icon {
+          width: 38px;
+          height: 38px;
+          border-radius: 10px;
+          background: rgba(59, 47, 224, 0.08);
+          color: var(--color-accent-primary);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+
+        .contact__resume-title {
+          font-family: var(--font-display);
+          font-size: 0.9375rem;
+          font-weight: 600;
+          color: var(--color-text-primary);
+          margin-bottom: 2px;
         }
 
         .contact__divider {

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -10,24 +11,31 @@ import Education from './components/Education';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ChatWidget from './components/ChatWidget';
+import ResumeModal from './components/ResumeModal';
 
 export default function App() {
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+
+  const openResume = () => setIsResumeOpen(true);
+  const closeResume = () => setIsResumeOpen(false);
+
   return (
     <>
-      <Navbar />
+      <Navbar onOpenResume={openResume} />
       <main>
-        <Hero />
-        <About />
+        <Hero onOpenResume={openResume} />
+        <About onOpenResume={openResume} />
         <Projects />
         <Startups />
         <Experience />
         <Skills />
         <Achievements />
         <Education />
-        <Contact />
+        <Contact onOpenResume={openResume} />
       </main>
-      <Footer />
-      <ChatWidget />
+      <Footer onOpenResume={openResume} />
+      <ChatWidget onOpenResume={openResume} />
+      <ResumeModal isOpen={isResumeOpen} onClose={closeResume} />
     </>
   );
 }

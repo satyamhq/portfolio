@@ -496,6 +496,31 @@ export const knowledgeBase = [
     answer: "💡 **Fun Fact:** Satyam's projects span the entire technology spectrum — from writing low-level Arduino firmware to nurture plants in a greenhouse 🌱, to building AI voice agents that conduct mock technical interviews 🤖!"
   },
   {
+    id: 'resume-cv',
+    keywords: ['resume', 'cv', 'curriculum vitae', 'download resume', 'download cv', 'view cv', 'view resume', 'get resume', 'pdf resume', 'resume link'],
+    answer: "📄 You can view and download Satyam's full CV right here by clicking the **'View CV / Resume'** button on the portfolio, or by visiting **https://satyamhq.github.io/resume.html** (or `/resume.html`).\n\n**Quick Summary of his CV:**\n• **Education:** B.Tech CSE at LPU (CGPA: 8.02)\n• **Skills:** C, C++, Python, JavaScript, HTML, CSS, Kali Linux, Metasploit, BurpSuite, Nmap, Wireshark, Next.js, Supabase\n• **Featured Projects:** Hackerzone (Autonomous AI Interview), Curely (AI Healthcare & Telemedicine), Agri1 (AI Farming Assistant)\n• **Training:** C/C++ Summer Training at Lovely Professional University\n• **Contact:** Email: satyam31sk@gmail.com | Phone: +91 - 6205844155"
+  },
+  {
+    id: 'phone-mobile',
+    keywords: ['phone', 'mobile', 'phone number', 'mobile number', 'call satyam', 'contact number', 'whatsapp'],
+    answer: "Satyam's contact mobile number is **+91 - 6205844155**. You can also reach him via email at **satyam31sk@gmail.com** or on LinkedIn at **linkedin.com/in/satyamhq**."
+  },
+  {
+    id: 'cgpa-grades',
+    keywords: ['cgpa', 'grades', 'marks', 'percentage', 'academic score', 'gpa'],
+    answer: "Satyam's academic scores:\n\n• **B.Tech CSE (LPU):** CGPA **8.02** (Aug '25 – Present)\n• **Intermediate (12th PCM - Mount Carmel):** **82%** (2023–2025)\n• **Matriculation (10th - Saraswati Vidya Mandir):** **85%** (2018–2023)"
+  },
+  {
+    id: 'cpp-summer-training',
+    keywords: ['summer training', 'lpu training', 'c training', 'cpp training', 'c cpp certificate'],
+    answer: "Satyam completed rigorous **C/C++ Programming Summer Training** at Lovely Professional University (Jan '26 – May '26). He focused on core algorithmic problem-solving, structured programming, memory management, pointers, dynamic arrays, structures, and object-oriented programming (OOP) paradigms."
+  },
+  {
+    id: 'cybersecurity-skills',
+    keywords: ['cybersecurity', 'security tools', 'kali linux', 'metasploit', 'burpsuite', 'nmap', 'wireshark', 'hydra', 'ethical hacking', 'pen testing'],
+    answer: "Satyam has practical knowledge of cybersecurity tools and platforms including **Kali Linux, Metasploit, BurpSuite, Nmap, Wireshark, and Hydra** for network vulnerability analysis, packet inspection, and system security auditing."
+  },
+  {
     id: 'general-redirect',
     keywords: ['weather', 'capital of', 'movie', 'song', 'news'],
     answer: "I'm specifically focused on answering questions about **Satyam Kumar**, his startup Savify, his skills, and his software projects. Ask me anything about Satyam!"
@@ -563,7 +588,9 @@ export function findAnswer(rawQuery) {
     { test: /^(contact|email|reach|message)$/i, id: 'contact-details' },
     { test: /^(certifications|certificates)$/i, id: 'all-certifications' },
     { test: /^(hackathons|competitions)$/i, id: 'hackathons-list' },
-    { test: /^(leetcode|cp|competitive programming)$/i, id: 'competitive-programming' }
+    { test: /^(leetcode|cp|competitive programming)$/i, id: 'competitive-programming' },
+    { test: /^(cv|resume|download cv|view cv|download resume|view resume|curriculum vitae)$/i, id: 'resume-cv' },
+    { test: /^(phone|mobile|phone number|mobile number|call)$/i, id: 'phone-mobile' }
   ];
 
   for (const mapping of directMappings) {

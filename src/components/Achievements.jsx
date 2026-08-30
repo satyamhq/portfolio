@@ -102,6 +102,7 @@ const certifications = [
 const codingProfiles = [
   {
     name: 'LeetCode',
+    stat: '100 DSA Solved (Mar \'26)',
     url: 'https://leetcode.com/satyamhq',
     icon: (
       <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
@@ -111,6 +112,7 @@ const codingProfiles = [
   },
   {
     name: 'HackerRank',
+    stat: '3★ Python Rating (Apr \'24)',
     url: 'https://hackerrank.com/satyamhq',
     icon: (
       <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
@@ -120,6 +122,7 @@ const codingProfiles = [
   },
   {
     name: 'HackerEarth',
+    stat: '31 Points (Mar \'26)',
     url: 'https://hackerearth.com/@satyamhq',
     icon: (
       <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
@@ -129,6 +132,7 @@ const codingProfiles = [
   },
   {
     name: 'CodeChef',
+    stat: '@satyamhq',
     url: 'https://codechef.com/users/satyamhq',
     icon: (
       <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
@@ -287,7 +291,9 @@ export default function Achievements() {
                   {profile.icon}
                   <div>
                     <span className="ach__profile-name">{profile.name}</span>
-                    <span className="caption">@satyamhq</span>
+                    <span className="caption" style={{ display: 'block', color: 'var(--color-accent-primary)', fontWeight: 550 }}>
+                      {profile.stat || '@satyamhq'}
+                    </span>
                   </div>
                 </a>
               ))}

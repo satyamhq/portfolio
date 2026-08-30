@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, FileText } from 'lucide-react';
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -13,7 +13,7 @@ const navLinks = [
   { label: 'Contact', href: '#contact' },
 ];
 
-export default function Navbar() {
+export default function Navbar({ onOpenResume }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -95,14 +95,24 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* CTA */}
-        <a
-          href="#contact"
-          className="btn btn-primary btn-sm navbar__cta"
-          onClick={(e) => handleNavClick(e, '#contact')}
-        >
-          Contact Me
-        </a>
+        {/* Action buttons */}
+        <div className="navbar__actions">
+          <button
+            type="button"
+            className="btn btn-secondary btn-sm navbar__resume-btn"
+            onClick={onOpenResume}
+            aria-label="Open Resume / CV"
+          >
+            <FileText size={15} /> Resume
+          </button>
+          <a
+            href="#contact"
+            className="btn btn-primary btn-sm navbar__cta"
+            onClick={(e) => handleNavClick(e, '#contact')}
+          >
+            Contact Me
+          </a>
+        </div>
 
         {/* Mobile Toggle */}
         <button
@@ -129,11 +139,22 @@ export default function Navbar() {
               {label}
             </a>
           ))}
+          <button
+            type="button"
+            className="btn btn-secondary"
+            onClick={() => {
+              setMobileOpen(false);
+              onOpenResume();
+            }}
+            style={{ marginTop: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
+          >
+            <FileText size={18} /> View / Download CV
+          </button>
           <a
             href="#contact"
             className="btn btn-primary"
             onClick={(e) => handleNavClick(e, '#contact')}
-            style={{ marginTop: '16px' }}
+            style={{ marginTop: '8px' }}
           >
             Contact Me
           </a>
@@ -222,8 +243,17 @@ export default function Navbar() {
           border-radius: 1px;
         }
 
-        .navbar__cta {
+        .navbar__actions {
+          display: flex;
+          align-items: center;
+          gap: 10px;
           flex-shrink: 0;
+        }
+
+        .navbar__resume-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
         }
 
         .navbar__toggle {
@@ -307,7 +337,7 @@ export default function Navbar() {
             display: none;
           }
 
-          .navbar__cta {
+          .navbar__actions {
             display: none;
           }
 
