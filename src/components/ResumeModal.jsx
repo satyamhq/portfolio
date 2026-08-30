@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { X, Printer, ExternalLink, Download, Copy, Check, FileText } from 'lucide-react';
+import { X, Printer, ExternalLink, Download, Copy, Check, FileText, Share2 } from 'lucide-react';
 
 export default function ResumeModal({ isOpen, onClose }) {
   const [copied, setCopied] = useState(false);
+  const [showShareMenu, setShowShareMenu] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -30,6 +31,43 @@ export default function ResumeModal({ isOpen, onClose }) {
       printWindow.addEventListener('load', () => {
         printWindow.print();
       });
+    }
+  };
+
+  const handleShare = async () => {
+    const shareUrl = `${window.location.origin}/resume.html`;
+    const shareData = {
+      title: "Satyam Kumar's Resume / CV",
+      text: "Check out Satyam Kumar's verified Resume & Portfolio.",
+      url: shareUrl,
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+        return;
+      } catch (err) {}
+    }
+    setShowShareMenu(!showShareMenu);
+  };
+
+  const handleShareOption = (platform) => {
+    const resumeUrl = encodeURIComponent(`${window.location.origin}/resume.html`);
+    const text = encodeURIComponent("Check out Satyam Kumar's Resume / CV");
+
+    let url = '';
+    if (platform === 'whatsapp') url = `https://api.whatsapp.com/send?text=${text}%20${resumeUrl}`;
+    else if (platform === 'linkedin') url = `https://www.linkedin.com/sharing/share-offsite/?url=${resumeUrl}`;
+    else if (platform === 'email') url = `mailto:?subject=Satyam%20Kumar%20Resume&body=${text}%0A%0A${resumeUrl}`;
+    else if (platform === 'copy') {
+      navigator.clipboard.writeText(`${window.location.origin}/resume.html`);
+      setShowShareMenu(false);
+      return;
+    }
+
+    if (url) {
+      window.open(url, '_blank', 'noopener,noreferrer');
+      setShowShareMenu(false);
     }
   };
 
@@ -105,6 +143,34 @@ EDUCATION
           </div>
 
           <div className="resume-modal-actions">
+            <div style={{ position: 'relative' }}>
+              <button
+                className="btn btn-secondary btn-sm"
+                onClick={handleShare}
+                title="Share Satyam's Resume"
+              >
+                <Share2 size={16} />
+                <span>Share</span>
+              </button>
+
+              {showShareMenu && (
+                <div className="resume-share-dropdown">
+                  <button onClick={() => handleShareOption('copy')} className="resume-share-item">
+                    <Copy size={13} /> Copy Link
+                  </button>
+                  <button onClick={() => handleShareOption('whatsapp')} className="resume-share-item">
+                    💬 WhatsApp
+                  </button>
+                  <button onClick={() => handleShareOption('linkedin')} className="resume-share-item">
+                    💼 LinkedIn
+                  </button>
+                  <button onClick={() => handleShareOption('email')} className="resume-share-item">
+                    ✉️ Email
+                  </button>
+                </div>
+              )}
+            </div>
+
             <button
               className="btn btn-secondary btn-sm"
               onClick={handleCopyText}
@@ -119,8 +185,8 @@ EDUCATION
               onClick={handlePrint}
               title="Print or Save as PDF"
             >
-              <Printer size={16} />
-              <span>Print / Save PDF</span>
+              <Download size={16} />
+              <span>Download / Print</span>
             </button>
 
             <a
@@ -432,6 +498,44 @@ EDUCATION
           display: flex;
           align-items: center;
           gap: 10px;
+        }
+
+        .resume-share-dropdown {
+          position: absolute;
+          top: calc(100% + 6px);
+          right: 0;
+          background: #ffffff;
+          border: 1px solid var(--color-border, #e5e4e0);
+          border-radius: 12px;
+          padding: 6px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+          z-index: 2050;
+          min-width: 140px;
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          animation: modalFadeIn 180ms ease;
+        }
+
+        .resume-share-item {
+          background: none;
+          border: none;
+          padding: 8px 12px;
+          border-radius: 8px;
+          font-size: 0.8125rem;
+          font-weight: 500;
+          text-align: left;
+          color: var(--color-text-primary, #111);
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          transition: background 150ms;
+        }
+
+        .resume-share-item:hover {
+          background: rgba(59, 47, 224, 0.08);
+          color: var(--color-accent-primary, #3B2FE0);
         }
 
         .resume-modal-close {

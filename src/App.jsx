@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import CVSection from './components/CVSection';
 import Projects from './components/Projects';
 import Startups from './components/Startups';
 import Experience from './components/Experience';
@@ -25,6 +26,7 @@ export default function App() {
       <main>
         <Hero onOpenResume={openResume} />
         <About onOpenResume={openResume} />
+        <CVSection onOpenResume={openResume} />
         <Projects />
         <Startups />
         <Experience />
