@@ -5,12 +5,14 @@ import LinkCard from './components/LinkCard';
 import HackerzoneS1Card from './components/HackerzoneS1Card';
 import Footer from './components/Footer';
 import Toast from './components/Toast';
+import ShareModal from './components/ShareModal';
 import { PROFILE_DATA, VERIFIED_LINKS } from './data/links';
 
 export default function App() {
   const [copied, setCopied] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
   const [showToast, setShowToast] = useState(false);
+  const [isShareOpen, setIsShareOpen] = useState(false);
 
   // Ensure any previous dark mode class or cache is cleanly stripped
   useEffect(() => {
@@ -52,24 +54,8 @@ export default function App() {
     }
   };
 
-  const handleShare = async () => {
-    const shareData = {
-      title: `${PROFILE_DATA.name} | Hackerzone`,
-      text: `${PROFILE_DATA.name} (@satyamhq) — Personal Link Hub on Hackerzone`,
-      url: PROFILE_DATA.canonicalUrl,
-    };
-
-    if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
-      try {
-        await navigator.share(shareData);
-      } catch (err) {
-        if (err.name !== 'AbortError') {
-          handleCopyLink();
-        }
-      }
-    } else {
-      handleCopyLink();
-    }
+  const handleShare = () => {
+    setIsShareOpen(true);
   };
 
   return (
@@ -106,6 +92,14 @@ export default function App() {
 
       {/* Footer matching Hackerzone official design */}
       <Footer />
+
+      {/* Share Options Modal (Phone-style sheet) */}
+      <ShareModal
+        isOpen={isShareOpen}
+        onClose={() => setIsShareOpen(false)}
+        profile={PROFILE_DATA}
+        onToast={triggerToast}
+      />
 
       {/* Toast feedback */}
       <Toast message={toastMessage} show={showToast} />
