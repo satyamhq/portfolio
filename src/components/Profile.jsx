@@ -5,23 +5,12 @@ export default function Profile({ profile, onCopyLink, copied, onShare }) {
   return (
     <section className="flex flex-col items-center text-center pt-8 sm:pt-12 pb-6 px-4">
       {/* Name and Verified Badge */}
-      <div className="flex items-center justify-center gap-2 mb-1.5">
+      <div className="flex items-center justify-center gap-2 mb-3 sm:mb-3.5">
         <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-foreground">
           {profile.name}
         </h1>
-        <span title="Verified Hackerzone Founder" aria-label="Verified Founder" className="inline-flex items-center text-foreground">
-          <VerifiedBadge className="w-5 h-5 text-foreground" />
-        </span>
-      </div>
-
-      {/* Handle and Roles */}
-      <div className="flex flex-wrap items-center justify-center gap-2 mb-3.5">
-        <span className="text-sm font-medium text-muted-foreground font-mono">
-          {profile.handle}
-        </span>
-        <span className="text-muted-foreground/40 text-xs">•</span>
-        <span className="inline-flex items-center rounded-full bg-foreground/5 px-2.5 py-0.5 text-xs font-medium text-foreground border border-border/60">
-          Founder & CEO, Hackerzone
+        <span title="Verified Hackerzone Founder" aria-label="Verified Founder" className="inline-flex items-center">
+          <VerifiedBadge className="w-5 h-5 sm:w-[22px] sm:h-[22px] shrink-0" />
         </span>
       </div>
 
