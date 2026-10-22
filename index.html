@@ -1,22 +1,271 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Satyam Kumar — Engineer, Builder, Founder. Second-year CSE student building real products, startups, and open-source projects." />
-    <meta name="keywords" content="Satyam Kumar, portfolio, software engineer, startup founder, Savify, web developer, CSE student" />
+    <title>Satyam Kumar | Hackerzone — Founder & CEO (@satyamhq)</title>
+    <meta
+      name="description"
+      content="Satyam Kumar (@satyamhq) — Founder & CEO at Hackerzone. Building at the intersection of AI, technology, and communities. Official verified link hub."
+    />
     <meta name="author" content="Satyam Kumar" />
-    <meta property="og:title" content="Satyam Kumar — Engineer | Builder | Founder" />
-    <meta property="og:description" content="Second-year CSE student exploring software development, web technologies, and AI through hands-on projects and continuous learning." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://satyamhq.dev" />
+    <meta name="keywords" content="Satyam Kumar, satyamhq, Hackerzone, Hackerzone founder, AI hackathons, builder, software engineer, satyam hackerzone" />
+    <link rel="canonical" href="https://satyam.hackerzone.in/" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Security Headers & Directives -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="rating" content="general" />
+
+    <!-- Crawlers & Search Engine Directives -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+    <!-- LLM / Answer Engine Optimization (AEO / GEO) -->
+    <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLM Context" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+
+    <!-- Critical Asset Preloads (Core Web Vitals LCP) -->
+    <link rel="preload" as="image" href="/brand/logo-black.webp" type="image/webp" />
+
+    <!-- Favicon Assets -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/web-app-manifest-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/web-app-manifest-512x512.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Hackerzone" />
+    <meta property="og:title" content="Satyam Kumar | Hackerzone — Founder & CEO (@satyamhq)" />
+    <meta
+      property="og:description"
+      content="Satyam Kumar (@satyamhq) — Founder & CEO at Hackerzone. Building at the intersection of AI, technology, and communities. Official verified link hub."
+    />
+    <meta property="og:url" content="https://satyam.hackerzone.in/" />
+    <meta property="og:image" content="https://satyam.hackerzone.in/brand/og-image.png" />
+    <meta property="og:image:secure_url" content="https://satyam.hackerzone.in/brand/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Satyam Kumar (@satyamhq) — Founder & CEO at Hackerzone" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="profile:first_name" content="Satyam" />
+    <meta property="profile:last_name" content="Kumar" />
+    <meta property="profile:username" content="satyamhq" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@satyamhq" />
+    <meta name="twitter:creator" content="@satyamhq" />
+    <meta name="twitter:title" content="Satyam Kumar | Hackerzone — Founder & CEO (@satyamhq)" />
+    <meta
+      name="twitter:description"
+      content="Satyam Kumar (@satyamhq) — Founder & CEO at Hackerzone. Building at the intersection of AI, technology, and communities. Official verified link hub."
+    />
+    <meta name="twitter:image" content="https://satyam.hackerzone.in/brand/og-image.png" />
+    <meta name="twitter:image:alt" content="Satyam Kumar (@satyamhq) — Founder & CEO at Hackerzone" />
+
+    <!-- Typography (Optimized Font Payload) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet" />
-    <title>Satyam Kumar — Engineer | Builder | Founder</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Structured Data (JSON-LD) for SEO & AEO / GEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "ProfilePage",
+            "@id": "https://satyam.hackerzone.in/#webpage",
+            "url": "https://satyam.hackerzone.in/",
+            "name": "Satyam Kumar | Hackerzone — Founder & CEO (@satyamhq)",
+            "description": "Satyam Kumar (@satyamhq) — Founder & CEO at Hackerzone. Building at the intersection of AI, technology, and communities.",
+            "breadcrumb": {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Hackerzone",
+                  "item": "https://hackerzone.in"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Satyam Kumar",
+                  "item": "https://satyam.hackerzone.in/"
+                }
+              ]
+            },
+            "isPartOf": {
+              "@type": "WebSite",
+              "@id": "https://satyam.hackerzone.in/#website",
+              "name": "Satyam Kumar - Official Link Hub",
+              "url": "https://satyam.hackerzone.in/",
+              "publisher": {
+                "@id": "https://hackerzone.in/#organization"
+              }
+            },
+            "about": {
+              "@id": "https://satyam.hackerzone.in/#person"
+            },
+            "mainEntity": {
+              "@id": "https://satyam.hackerzone.in/#person"
+            }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://satyam.hackerzone.in/#person",
+            "name": "Satyam Kumar",
+            "alternateName": ["@satyamhq", "satyamhq"],
+            "jobTitle": "Founder & CEO",
+            "description": "Founder & CEO at Hackerzone. Building at the intersection of AI, technology, and communities.",
+            "url": "https://satyam.hackerzone.in/",
+            "image": "https://satyam.hackerzone.in/brand/og-image.png",
+            "email": "mailto:satyam@hackerzone.in",
+            "telephone": "+916205844155",
+            "worksFor": {
+              "@id": "https://hackerzone.in/#organization"
+            },
+            "knowsAbout": [
+              "Artificial Intelligence",
+              "AI Hackathons",
+              "Full-Stack Web Development",
+              "Community Building",
+              "Product Engineering",
+              "Developer Tools"
+            ],
+            "sameAs": [
+              "https://github.com/satyamhq",
+              "https://www.linkedin.com/in/satyamhq",
+              "https://instagram.com/satyamkr.31",
+              "https://api.whatsapp.com/send?phone=916205844155",
+              "https://hackerzone.in",
+              "https://linktr.ee/satyamhq"
+            ]
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://hackerzone.in/#organization",
+            "name": "Hackerzone",
+            "url": "https://hackerzone.in",
+            "logo": "https://satyam.hackerzone.in/brand/logo-black.png",
+            "founder": {
+              "@id": "https://satyam.hackerzone.in/#person"
+            },
+            "description": "The premier hackathon and project showcase platform for AI builders worldwide.",
+            "sameAs": [
+              "https://hackerzone.in"
+            ]
+          },
+          {
+            "@type": "ItemList",
+            "@id": "https://satyam.hackerzone.in/#itemlist",
+            "name": "Verified Personal & Project Links",
+            "description": "Curated list of verified official social, contact, and project links for Satyam Kumar.",
+            "itemListOrder": "https://schema.org/ItemListOrderAscending",
+            "numberOfItems": 7,
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Instagram",
+                "url": "https://instagram.com/satyamkr.31"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "WhatsApp",
+                "url": "https://api.whatsapp.com/send?phone=916205844155"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "LinkedIn",
+                "url": "https://www.linkedin.com/in/satyamhq"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "GitHub",
+                "url": "https://github.com/satyamhq"
+              },
+              {
+                "@type": "ListItem",
+                "position": 5,
+                "name": "Email",
+                "url": "mailto:satyam@hackerzone.in"
+              },
+              {
+                "@type": "ListItem",
+                "position": 6,
+                "name": "Visit Hackerzone",
+                "url": "https://hackerzone.in/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 7,
+                "name": "Hackerzone S1 Flagship Season",
+                "url": "https://hackerzone.in/hackathons"
+              }
+            ]
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://satyam.hackerzone.in/#faq",
+            "name": "Frequently Asked Questions about Satyam Kumar & Hackerzone",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Who is Satyam Kumar?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Satyam Kumar (@satyamhq) is the Founder & CEO of Hackerzone. He is an engineer and builder working at the intersection of AI, software engineering, and developer communities."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is Hackerzone?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Hackerzone (hackerzone.in) is the premier hackathon and showcase platform where AI builders collaborate, compete, and ship production-ready software."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How can I contact Satyam Kumar?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You can contact Satyam Kumar directly via official email at satyam@hackerzone.in or on WhatsApp at +916205844155. You can also connect with him on LinkedIn (in/satyamhq) and GitHub (@satyamhq)."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is Hackerzone S1?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Hackerzone S1 is the flagship inaugural AI hackathon season hosted by Hackerzone, bringing together top builders worldwide to build cutting-edge software and launch new products."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
-  <body>
-    <div id="root"></div>
+  <body class="min-h-full flex flex-col bg-background text-foreground antialiased selection:bg-foreground selection:text-background">
+    <div id="root" class="min-h-full flex flex-col flex-1"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
